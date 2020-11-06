@@ -33,7 +33,8 @@ class PlayerController extends BaseController
         $searchParams = $request->all();
         $playerQuery = Player::query();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
-        $keyword = Arr::get($searchParams, 'keyword', '');
+        $keyword = Arr::get($searchParams, 'title', '');
+        $sort = Arr::get($searchParams, 'sort', '');
 
         if (!empty($keyword)) {
             $playerQuery->where('first_name', 'LIKE', '%' . $keyword . '%');
@@ -41,7 +42,15 @@ class PlayerController extends BaseController
             $playerQuery->where('email', 'LIKE', '%' . $keyword . '%');
         }
 
-        return PlayerResource::collection($playerQuery->paginate($limit));
+        if (!empty($sort)) {
+            if (strpos($sort, '+')) {
+                $sorted = PlayerResource::collection($playerQuery->paginate($limit))->sortBy(str_replace('+', '', $sort));
+            } else {
+                $sorted = PlayerResource::collection($playerQuery->paginate($limit))->sortByDesc(str_replace('-', '', $sort));
+            }
+        }
+
+        return $sorted->values()->all();
     }
 
     /**

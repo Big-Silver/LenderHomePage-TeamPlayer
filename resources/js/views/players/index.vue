@@ -75,7 +75,7 @@
         </el-form-item>
         <el-form-item :label="$t('table.team')">
           <el-select v-model="temp.team" class="filter-item" placeholder="Please select">
-            <el-option v-for="item in teamOptions" :key="item.value" :label="item.title" :value="item.value" />
+            <el-option v-for="item in teamOptions" :key="item.id" :label="item.name" :value="item.id" />
           </el-select>
         </el-form-item>
       </el-form>
@@ -93,6 +93,7 @@
 
 <script>
 import { fetchList, createPlayer, updatePlayer, deletePlayer } from '@/api/player';
+import { fetchList as fetchTeamList } from '@/api/team';
 import waves from '@/directive/waves'; // Waves directive
 import { parseTime } from '@/utils';
 import Pagination from '@/components/Pagination'; // Secondary package based on el-pagination
@@ -127,16 +128,7 @@ export default {
       },
       importanceOptions: [1, 2, 3],
       sortOptions: [{ label: 'ID Ascending', key: '+id' }, { label: 'ID Descending', key: '-id' }],
-      teamOptions: [
-        {
-          title: 'team 1',
-          value: 1,
-        },
-        {
-          title: 'team 2',
-          value: 2,
-        },
-      ],
+      teamOptions: [],
       showReviewer: false,
       temp: {
         first_name: '',
@@ -164,21 +156,26 @@ export default {
   },
   created() {
     this.getList();
+    this.getTeamList();
   },
   methods: {
     async getList() {
       this.listLoading = true;
-      const { data } = await fetchList(this.listQuery);
+      const data = await fetchList(this.listQuery);
       this.list = data;
       this.total = data.length;
 
       // Just to simulate the time of the request
       this.listLoading = false;
     },
-    // async getTeamList() {
-    //   this.listLoading = true;
-    //   const { data } = a
-    // },
+    async getTeamList() {
+      this.listLoading = true;
+      const listQuery = {
+        limit: 'all',
+        sort: '+id',
+      };
+      this.teamOptions = await fetchTeamList(listQuery);
+    },
     handleFilter() {
       this.listQuery.page = 1;
       this.getList();

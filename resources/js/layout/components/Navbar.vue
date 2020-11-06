@@ -23,16 +23,6 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
-          <router-link to="/">
-            <el-dropdown-item>
-              {{ $t('navbar.dashboard') }}
-            </el-dropdown-item>
-          </router-link>
-          <router-link v-show="userId !== null" :to="`/profile/edit`">
-            <el-dropdown-item>
-              {{ $t('navbar.profile') }}
-            </el-dropdown-item>
-          </router-link>
           <a target="_blank" href="https://github.com/Big-Silver/LenderHomePage-TeamPlayer">
             <el-dropdown-item>
               {{ $t('navbar.github') }}

@@ -33,15 +33,26 @@ class TeamController extends BaseController
         $searchParams = $request->all();
         $teamQuery = Team::query();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
-        $keyword = Arr::get($searchParams, 'keyword', '');
+        $keyword = Arr::get($searchParams, 'title', '');
+        $sort = Arr::get($searchParams, 'sort', '');
 
-        if (!empty($keyword)) {
-            $teamQuery->where('first_name', 'LIKE', '%' . $keyword . '%');
-            $teamQuery->where('last_name', 'LIKE', '%' . $keyword . '%');
-            $teamQuery->where('email', 'LIKE', '%' . $keyword . '%');
+        if ($limit == 'all') {
+           return Team::all();
         }
 
-        return TeamResource::collection($teamQuery->paginate($limit));
+        if (!empty($keyword)) {
+            $teamQuery->where('name', 'LIKE', '%' . $keyword . '%');
+        }
+
+        if (!empty($sort)) {
+            if (strpos($sort, '+')) {
+                $sorted = TeamResource::collection($teamQuery->paginate($limit))->sortBy(str_replace('+', '', $sort));
+            } else {
+                $sorted = TeamResource::collection($teamQuery->paginate($limit))->sortByDesc(str_replace('-', '', $sort));
+            }
+        }
+
+        return $sorted->values()->all();
     }
 
     /**

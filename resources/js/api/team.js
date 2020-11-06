@@ -23,7 +23,7 @@ export function createTeam(data) {
   });
 }
 
-export function updateteam(data) {
+export function updateTeam(data) {
   return request({
     url: '/teams/' + data.id,
     method: 'put',

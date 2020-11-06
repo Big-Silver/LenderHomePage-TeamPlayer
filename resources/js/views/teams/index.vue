@@ -94,9 +94,7 @@ export default {
       listQuery: {
         page: 1,
         limit: 20,
-        importance: undefined,
         title: undefined,
-        type: undefined,
         sort: '+id',
       },
       importanceOptions: [1, 2, 3],
@@ -123,7 +121,7 @@ export default {
   methods: {
     async getList() {
       this.listLoading = true;
-      const { data } = await fetchList(this.listQuery);
+      const data = await fetchList(this.listQuery);
       this.list = data;
       this.total = data.length;
 
