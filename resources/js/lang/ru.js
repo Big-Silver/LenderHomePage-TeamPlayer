@@ -1,5 +1,7 @@
 export default {
   route: {
+    players: 'Players',
+    teams: 'Teams',
     dashboard: 'Панель управления',
     introduction: 'Введение',
     documentation: 'Документация',
@@ -146,6 +148,10 @@ export default {
     confirm: 'Подтвердить',
     keyword: 'Ключевое слово',
     role: 'Роль',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    team: 'Team',
+    email: 'Email',
   },
   errorLog: {
     tips: 'Пожалуйста, нажмите на иконку "бага" в правом верхнем углу',

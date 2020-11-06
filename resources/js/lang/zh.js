@@ -1,5 +1,7 @@
 export default {
   route: {
+    players: 'Players',
+    teams: 'Teams',
     dashboard: '首页',
     introduction: '简述',
     documentation: '文档',
@@ -136,6 +138,10 @@ export default {
     delete: '删除',
     cancel: '取 消',
     confirm: '确 定',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    team: 'Team',
+    email: 'Email',
   },
   errorLog: {
     tips: '请点击右上角bug小图标',

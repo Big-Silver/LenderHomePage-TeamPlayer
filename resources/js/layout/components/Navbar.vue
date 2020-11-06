@@ -33,7 +33,7 @@
               {{ $t('navbar.profile') }}
             </el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/tuandm/laravue/">
+          <a target="_blank" href="https://github.com/Big-Silver/LenderHomePage-TeamPlayer">
             <el-dropdown-item>
               {{ $t('navbar.github') }}
             </el-dropdown-item>

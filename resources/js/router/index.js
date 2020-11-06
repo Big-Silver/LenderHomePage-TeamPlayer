@@ -80,6 +80,32 @@ export const constantRoutes = [
     hidden: true,
   },
   {
+    path: '/players',
+    component: Layout,
+    redirect: '/players/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/players/index'),
+        name: 'Players',
+        meta: { title: 'players', icon: 'theme', noCache: true },
+      },
+    ],
+  },
+  {
+    path: '/teams',
+    component: Layout,
+    redirect: '/teams/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/teams/index'),
+        name: 'Teams',
+        meta: { title: 'teams', icon: 'theme', noCache: true },
+      },
+    ],
+  },
+  {
     path: '',
     component: Layout,
     redirect: 'dashboard',

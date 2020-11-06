@@ -31,7 +31,7 @@ class UserController extends BaseController
 {
     const ITEM_PER_PAGE = 15;
 
-    /**
+    /** 
      * Display a listing of the user resource.
      *
      * @param  \Illuminate\Http\Request  $request

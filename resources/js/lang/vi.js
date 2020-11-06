@@ -4,6 +4,8 @@ export default {
     return: 'Trở về',
   },
   route: {
+    players: 'Players',
+    teams: 'Teams',
     dashboard: 'Giao diện chính',
     introduction: 'Giới thiệu',
     documentation: 'Tài liệu',
@@ -144,6 +146,10 @@ export default {
     confirm: 'Confirm',
     keyword: 'Từ khóa',
     role: 'Nhóm',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    team: 'Team',
+    email: 'Email',
   },
   errorLog: {
     tips: 'Please click the bug icon in the upper right corner',
