@@ -16,7 +16,9 @@
   </a>
 </p>
 
-# Laravue
+# LenderHomePage Test Project
+This project is based on Laravue.
+
 [Laravue](https://laravue.dev) (pronounced /ˈlarəvjuː/) is a beautiful dashboard combination of [Laravel](https://laravel.com/), [Vue.js](https://github.com/vuejs/vue) and the UI Toolkit [Element](https://github.com/ElemeFE/element). The work is inspired by  [vue-element-admin](http://panjiachen.github.io/vue-element-admin) with our love on top of that. With the powerful Laravel framework as the backend, Vue.js as the high performance on the frontend,  Laravue appears to be a full-stack solution for an enterprise application level.
 
 Documentation: [https://doc.laravue.dev](https://doc.laravue.dev)
@@ -40,8 +42,11 @@ Documentation: [https://doc.laravue.dev](https://doc.laravue.dev)
 
 ```bash
 # Clone the project and run composer
-composer create-project tuandm/laravue
+git clone https://github.com/Big-Silver/LenderHomePage-TeamPlayer laravue
+
 cd laravue
+
+composer install
 
 # Migration and DB seeder (after changing your DB settings in .env)
 php artisan migrate --seed
